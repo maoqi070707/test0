@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 const s = "content"
@@ -83,4 +84,36 @@ func main() {
 		fmt.Println("smaller than 5 or 9")
 	}
 
+	switch time.Now().Weekday() {
+	case time.Saturday, time.Sunday:
+		fmt.Println("It is weekend!")
+	default:
+		fmt.Println("It it working day!")
+	}
+
+	switch {
+	case time.Now().Hour() < 12:
+		fmt.Println("It is morning")
+	case time.Now().Hour() < 18:
+		fmt.Println("It is afternoon")
+	default:
+		fmt.Println("It is evening")
+	}
+
+	WhatAnI := func(i interface{}) {
+		switch i.(type) {
+		case int:
+			fmt.Println("Type is int")
+		case string:
+			fmt.Println("Type is string")
+		case bool:
+			fmt.Println("Type is bool")
+		default:
+			fmt.Println("Tyoe is unknown")
+		}
+	}
+
+	WhatAnI(10)
+	WhatAnI("hello")
+	WhatAnI(true)
 }
