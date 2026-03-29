@@ -116,4 +116,20 @@ func main() {
 	WhatAnI(10)
 	WhatAnI("hello")
 	WhatAnI(true)
+
+	var arr [5]int
+	arr[0] = 1
+	arr[1] = 2
+
+	arr1 := [5]int{1, 2, 3, 4, 5}
+	fmt.Println(arr1)
+
+	var twoD = [3][2]int{{1, 2}, {3, 4}, {5, 6}}
+	fmt.Println(twoD)
+
+	for i := 0; i < len(twoD); i++ {
+		for j := 0; j < len(twoD[i]); j++ {
+			fmt.Println(twoD[i][j])
+		}
+	}
 }
