@@ -66,4 +66,21 @@ func main() {
 		}
 		fmt.Println(i)
 	}
+
+	for i := 0; i < 5; i++ {
+		if i%2 == 0 {
+			fmt.Println(i)
+		} else {
+			fmt.Println("=-=-=-=-=-=-=-")
+		}
+	}
+
+	if num := 10; num > 5 {
+		fmt.Println("bigger than 5")
+	} else if num > 9 {
+		fmt.Println("bigger than 9")
+	} else {
+		fmt.Println("smaller than 5 or 9")
+	}
+
 }
