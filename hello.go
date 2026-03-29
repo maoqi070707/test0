@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
+
+const s = "content"
 
 func main() {
 	fmt.Println("hello world")
@@ -30,4 +35,13 @@ func main() {
 	g := "world"
 	fmt.Println(f + " " + g)
 
+	const n = 500000000
+	const m = 6e20 / n
+	fmt.Println(m)
+	fmt.Println(int64(m))
+
+	fmt.Println(math.Pi)
+	fmt.Println(math.Sin(n))
+
+	fmt.Println(s)
 }
