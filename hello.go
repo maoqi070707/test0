@@ -132,4 +132,26 @@ func main() {
 			fmt.Println(twoD[i][j])
 		}
 	}
+
+	slice := make([]string, 5)
+	slice[0] = "111"
+	slice[1] = "222"
+	slice = append(slice, "3", "4", "5")
+
+	slice1 := make([]string, len(slice))
+	copy(slice1, slice)
+	fmt.Println(slice1)
+
+	s := slice[2:4]
+	fmt.Println(s)
+
+	s1 := make([][]int, 3)
+	for i := 0; i < len(s1); i++ {
+		innerlen := i + 1
+		s1[i] = make([]int, innerlen)
+		for j := 0; j < innerlen; j++ {
+			s1[i][j] = i + j
+		}
+	}
+	fmt.Println(s1)
 }
