@@ -154,4 +154,40 @@ func main() {
 		}
 	}
 	fmt.Println(s1)
+
+	i1 := []int{1, 2, 3, 4, 5}
+	i2 := i1[1:4]
+	fmt.Println(i2)
+	fmt.Println("切片长度不固定")
+
+	i2 = make([]int, len(i1), 10)
+	fmt.Println("切片长度固定,第三个参数为容量")
+	fmt.Println(len(i2), cap(i2))
+
+	// 切片的容量不足时，会自动扩容，扩容的大小为原来的2倍
+	x := make([]int, 3, 5)
+	t := make([]int, len(s), (cap(s)+1)*2) // +1 in case cap(s) == 0
+	for i := range s {
+		t[i] = x[i]
+	} //for循环可用copy简化
+	x = t
+
+	//向切片的末尾加入数据，如果容量不足，会自动扩容
+	p := []byte{2, 3, 5}
+	p = AppendByte(p, 7, 11, 13)
+}
+
+// AppendByte 向切片的末尾加入数据，如果容量不足，会自动扩容
+func AppendByte(slice []byte, data ...byte) []byte {
+	m := len(slice)
+	n := m + len(data)
+	if n > cap(slice) { // if necessary, reallocate
+		// allocate double what's needed, for future growth.
+		newSlice := make([]byte, (n+1)*2)
+		copy(newSlice, slice)
+		slice = newSlice
+	}
+	slice = slice[0:n]
+	copy(slice[m:n], data)
+	return slice
 }
