@@ -175,6 +175,27 @@ func main() {
 	//向切片的末尾加入数据，如果容量不足，会自动扩容
 	p := []byte{2, 3, 5}
 	p = AppendByte(p, 7, 11, 13)
+
+	//创建空map需要用make
+	mp := make(map[string]int)
+
+	//创建非空map
+	mp1 := map[string]int{"1st": 1, "2nd": 2}
+	fmt.Println(mp1)
+	mp["1st"] = 1
+	mp["2nd"] = 2
+	fmt.Println(mp)
+
+	//判断键是否存在
+	_, prs := mp["3rd"]
+	fmt.Println(prs)
+
+	delete(mp, "2nd")
+
+	//访问时，要有判断键是否存在
+	val, prs := mp["1st"]
+	fmt.Println(val, prs)
+	fmt.Println("len(mp)=", len(mp))
 }
 
 // AppendByte 向切片的末尾加入数据，如果容量不足，会自动扩容
