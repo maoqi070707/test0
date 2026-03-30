@@ -196,6 +196,14 @@ func main() {
 	val, prs := mp["1st"]
 	fmt.Println(val, prs)
 	fmt.Println("len(mp)=", len(mp))
+
+	//:= 只能在函数内使用（局部变量）
+	//var全局或局部均可
+	//:= 允许在同一作用域「部分新变量」
+	//var 同一作用域不能重复
+	//:= 必须马上赋值
+	//var可声明不赋值
+	//多返回值场景:=更优雅
 }
 
 // AppendByte 向切片的末尾加入数据，如果容量不足，会自动扩容
