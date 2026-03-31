@@ -262,6 +262,23 @@ func main() {
 	for _, f := range functions {
 		f()
 	}
+
+	fmt.Println(fact(5))
+	var fib func(w int) int
+	fib = func(w int) int {
+		if w < 2 {
+			return w
+		}
+		return fib(w-1) + fib(w-2)
+	}
+
+	fmt.Println(fib(7))
+}
+func fact(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * fact(n-1)
 }
 func intSeq() func() int {
 	i := 0
