@@ -227,12 +227,24 @@ func main() {
 		fmt.Printf("%d %c\n", i, c)
 	}
 
-	sum := plus(1, 2)
-	fmt.Println(sum)
+	result := plus(1, 2)
+	fmt.Println(result)
 	fmt.Println(plusplus(1, 2, 3))
 	fmt.Println(swap("hello", "world"))
 	n1, _ := swap("hello", "world")
 	fmt.Println(n1)
+
+	ns := []int{1, 2, 3, 4, 5}
+	ns1 := append(ns, 6, 7, 8)
+	fmt.Println(sum(ns...))
+	fmt.Println(sum(ns1...))
+}
+func sum(nums ...int) int {
+	total := 0
+	for _, num := range nums {
+		total += num
+	}
+	return total
 }
 
 func plus(a int, b int) int {
