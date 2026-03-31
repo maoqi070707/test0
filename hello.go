@@ -273,6 +273,13 @@ func main() {
 	}
 
 	fmt.Println(fib(7))
+
+	I := 10
+	Zeroval(&I)
+	fmt.Println(I)
+}
+func Zeroval(ptr *int) {
+	*ptr = 0
 }
 func fact(n int) int {
 	if n == 0 {
