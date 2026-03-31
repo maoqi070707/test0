@@ -238,7 +238,39 @@ func main() {
 	ns1 := append(ns, 6, 7, 8)
 	fmt.Println(sum(ns...))
 	fmt.Println(sum(ns1...))
+
+	//闭包 = 函数 + 它引用的外部环境变量
+	//闭包会记住变量，不会被垃圾回收
+	//闭包可以封装私有状态
+	//闭包引用的是变量本身，不是值（注意坑）
+	nextInt := intSeq()
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+
+	fmt.Println("------------------------")
+
+	var functions []func()
+	//Go 1.22 版本对 for 循环做了重大优化：
+	//循环变量 i 每次迭代都会创建一个新的副本，而不是复用同一个变量。
+	//因此，在循环体中对变量 i 的修改，不会影响到外层循环的下一次迭代。
+	for i := 0; i < 3; i++ {
+		functions = append(functions, func() {
+			fmt.Println(i)
+		})
+	}
+	for _, f := range functions {
+		f()
+	}
 }
+func intSeq() func() int {
+	i := 0
+	return func() int {
+		i++
+		return i
+	}
+}
+
 func sum(nums ...int) int {
 	total := 0
 	for _, num := range nums {
