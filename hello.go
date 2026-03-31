@@ -226,6 +226,26 @@ func main() {
 	for i, c := range str {
 		fmt.Printf("%d %c\n", i, c)
 	}
+
+	sum := plus(1, 2)
+	fmt.Println(sum)
+	fmt.Println(plusplus(1, 2, 3))
+	fmt.Println(swap("hello", "world"))
+	n1, _ := swap("hello", "world")
+	fmt.Println(n1)
+}
+
+func plus(a int, b int) int {
+	return a + b
+}
+
+func plusplus(a, b, c int) int {
+	return a + b + c
+}
+
+// 多返回值
+func swap(x, y string) (string, string) {
+	return y, x
 }
 
 // AppendByte 向切片的末尾加入数据，如果容量不足，会自动扩容
