@@ -204,6 +204,28 @@ func main() {
 	//:= 必须马上赋值
 	//var可声明不赋值
 	//多返回值场景:=更优雅
+	num := []int{1, 2, 3, 4, 5}
+	for index, value := range num {
+		fmt.Println(index, value)
+	}
+
+	dict := make(map[string]int)
+	dict["a"] = 1
+	dict["b"] = 2
+	dict["c"] = 3
+
+	for key := range dict {
+		fmt.Println("key:", key)
+	}
+
+	for key, value := range dict {
+		fmt.Printf("%s -> %d\n", key, value)
+	}
+
+	str := "hello你好😊"
+	for i, c := range str {
+		fmt.Printf("%d %c\n", i, c)
+	}
 }
 
 // AppendByte 向切片的末尾加入数据，如果容量不足，会自动扩容
