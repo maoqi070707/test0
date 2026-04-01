@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"time"
+	"unicode/utf8"
 )
 
 const s = "content"
@@ -277,6 +278,25 @@ func main() {
 	I := 10
 	Zeroval(&I)
 	fmt.Println(I)
+
+	str1 := "สวัสดี"
+	fmt.Println("rune count:", utf8.RuneCountInString(str1))
+	//range函数遍历字符串
+	for i, r := range str1 {
+		fmt.Printf("%d -> %c\n", i, r)
+	}
+	//手动解码
+	for i, w := 0, 0; i < len(str1); i += w {
+		runeValue, width := utf8.DecodeRuneInString(str1[i:])
+		fmt.Printf("%d -> %c\n", i, runeValue)
+		w = width
+		examineRune(runeValue)
+	}
+}
+func examineRune(r rune) {
+	if r == 'ส' {
+		fmt.Println("found")
+	}
 }
 func Zeroval(ptr *int) {
 	*ptr = 0
