@@ -292,7 +292,64 @@ func main() {
 		w = width
 		examineRune(runeValue)
 	}
+
+	fmt.Println(person{"Tom", 25})
+	fmt.Println(person{name: "Jerry", age: 30})
+	fmt.Println(person{name: "Bob"})
+	fmt.Println(&person{name: "Alice", age: 20})
+	sss := newPerson("Sam")
+	fmt.Println(sss)
+	fmt.Println(sss.name)
+
+	r := rect{3.0, 4.0}
+	fmt.Println(r.area())
+	r.setArea(10.0)
+	fmt.Println(r.wide, r.high)
+
+	measure(r)
+	measure(&r)
 }
+
+func newPerson(name string) *person {
+	p := new(person)
+	p.name = name
+	p.age = 23
+	return p
+}
+
+type geometry interface {
+	area() float64
+	perim() float64
+}
+
+func measure(g geometry) {
+	fmt.Println(g)
+	fmt.Println(g.area())
+	fmt.Println(g.perim())
+}
+
+func (r rect) perim() float64 {
+	return 2*r.wide + 2*r.high
+}
+
+type rect struct {
+	wide, high float64
+}
+
+func (r rect) area() float64 {
+	return r.wide * r.high
+}
+
+func (r *rect) setArea(area float64) {
+	r.wide = math.Sqrt(area)
+	r.high = math.Sqrt(area)
+}
+
+type person struct {
+	name string
+	age  int
+}
+
 func examineRune(r rune) {
 	if r == 'ส' {
 		fmt.Println("found")
