@@ -308,6 +308,40 @@ func main() {
 
 	measure(r)
 	measure(&r)
+	// 结构体嵌套,匿名字段显式声明
+	P := Person{
+		name: "Tom",
+		age:  25,
+		Birthday: Birthday{
+			year:  1990,
+			month: 1,
+			day:   1,
+		},
+	}
+	var des describer = P
+	fmt.Printf("%s  %d", P.name, P.age)
+	fmt.Println(des.pt())
+}
+
+type describer interface {
+	pt() string
+}
+
+type Birthday struct {
+	year  int
+	month int
+	day   int
+}
+
+func (b Birthday) pt() string {
+	return fmt.Sprintf("%d-%02d-%02d", b.year, b.month, b.day)
+}
+
+// 嵌入的结构体不用写名字，直接使用
+type Person struct {
+	name string
+	age  int
+	Birthday
 }
 
 func newPerson(name string) *person {
